@@ -1,3 +1,10 @@
+- if @training_plan.errors.any?
+  .flash-error
+    %h2 Form errors were detected
+    %ul
+    - @training_plan.errors.full_messages.each do |msg|
+      %li= msg
+
 = form_for @training_plan do |f|
   = f.label :name
   = f.text_field :name

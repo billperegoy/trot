@@ -49,4 +49,7 @@ end
 
 gem 'pry-rails', :group => :development
 gem 'haml-rails'
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
 
