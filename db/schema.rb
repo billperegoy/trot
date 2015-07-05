@@ -11,14 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704011610) do
+ActiveRecord::Schema.define(version: 20150705183731) do
 
   create_table "training_plans", force: :cascade do |t|
     t.string   "name"
-    t.integer  "weeks"
     t.float    "distance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "weeks", force: :cascade do |t|
+    t.integer  "number"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "training_plan_id"
   end
 
 end

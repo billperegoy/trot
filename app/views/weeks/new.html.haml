@@ -1,0 +1,14 @@
+- if @week.errors.any?
+  .flash-error
+    %h2 Form errors were detected
+    %ul
+    - @week.errors.full_messages.each do |msg|
+      %li= msg
+
+%h1 Create new week
+
+= form_for [@training_plan, @week] do |f|
+  = f.label :number
+  = f.text_field :number
+
+  = f.submit

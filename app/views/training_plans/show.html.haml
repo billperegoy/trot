@@ -4,5 +4,31 @@
   = @training_plan.distance
 %h2
   Time: 
-  = @training_plan.weeks
+  = @training_plan.weeks.count
   weeks
+
+= link_to "Add a Week", new_training_plan_week_path(@training_plan)
+
+%table
+  %tr 
+    %th Week
+    %th 1
+    %th 2
+    %th 3
+    %th 4
+    %th 5
+    %th 6
+    %th 7
+  - @training_plan.weeks.each do |week|
+    %tr
+      %td 
+        Week
+        = week.number
+      %td REST
+      %td REST
+      %td REST
+      %td REST
+      %td REST
+      %td REST
+      %td REST
+

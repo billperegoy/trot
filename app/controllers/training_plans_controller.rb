@@ -16,8 +16,12 @@ class TrainingPlansController < ApplicationController
     @training_plan = TrainingPlan.find(params[:id])
   end
 
+  def index
+    @training_plans = TrainingPlan.all
+  end
+
   private
   def training_plan_params
-    params.require(:training_plan).permit(:name, :weeks, :distance)
+    params.require(:training_plan).permit(:name, :distance)
   end
 end

@@ -6,7 +6,4 @@ RSpec.describe TrainingPlan, :type => :model do
 
   it { should validate_presence_of :distance }
   it { should validate_numericality_of :distance }
-
-  it { should validate_presence_of :weeks }
-  it { should validate_numericality_of(:weeks).only_integer }
 end
