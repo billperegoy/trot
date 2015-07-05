@@ -9,6 +9,6 @@
 
 = form_for [@training_plan, @week] do |f|
   = f.label :number
-  = f.text_field :number
+  = f.text_field :number, autofocus: true
 
   = f.submit

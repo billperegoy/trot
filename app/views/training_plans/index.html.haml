@@ -1,6 +1,7 @@
 %h1 All Training Plans
 
+= link_to "new plan", new_training_plan_path
 %ul
 - @training_plans.each do |plan|
-  %li= plan.name
+  %li= link_to "#{plan.name}", training_plan_path(plan)
 

@@ -32,6 +32,7 @@ module Trot
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    # :nocov:
     console do
       require "pry"
       config.console = Pry
@@ -42,5 +43,6 @@ module Trot
       require "rails/console/helpers"
       TOPLEVEL_BINDING.eval('self').extend ::Rails::ConsoleMethods
     end
+    # :nocov:
   end
 end

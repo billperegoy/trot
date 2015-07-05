@@ -46,6 +46,7 @@ group :development, :test do
   gem 'capybara'
   gem 'shoulda'
 end
+gem 'simplecov', :require => false, :group => :test
 
 gem 'pry-rails', :group => :development
 gem 'haml-rails'
