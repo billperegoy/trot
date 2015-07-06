@@ -7,7 +7,7 @@
   = @training_plan.weeks.count
   weeks
 
-= link_to "Add a Week", new_training_plan_week_path(@training_plan)
+= button_to "Add a Week", new_training_plan_week_path(@training_plan), method: :get
 
 %table
   %tr 

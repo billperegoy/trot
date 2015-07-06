@@ -41,15 +41,11 @@ feature "create a training plan" do
       create_training_plan(name: 'Half Marathon Training Plan',
                            distance: 13.1
                           )
-      click_link "Add a Week"
-      fill_in "Number", with: '1'
-      click_on "Create Week"
+      create_week('1')
       expect(page).to have_content("Half Marathon Training Plan")
       expect(page).to have_content("Week 1")
 
-      click_link "Add a Week"
-      fill_in "Number", with: '2'
-      click_on "Create Week"
+      create_week('2')
       expect(page).to have_content("Half Marathon Training Plan")
       expect(page).to have_content("Week 1")
       expect(page).to have_content("Week 2")
@@ -59,13 +55,8 @@ feature "create a training plan" do
       create_training_plan(name: 'Half Marathon Training Plan',
                            distance: 13.1
                           )
-      click_link "Add a Week"
-      fill_in "Number", with: '1'
-      click_on "Create Week"
-
-      click_link "Add a Week"
-      fill_in "Number", with: '1'
-      click_on "Create Week"
+      create_week('1')
+      create_week('1')
       expect(page).to have_content("Number has already been taken")
     end
 
@@ -77,5 +68,11 @@ feature "create a training plan" do
     fill_in "Name", with: name 
     fill_in "Distance", with: distance
     click_on "Create Training plan"
+  end
+
+  def create_week(number)
+    click_button "Add a Week"
+    fill_in "Number", with: number
+    click_on "Create Week"
   end
 end
