@@ -1,0 +1,7 @@
+%h1 Create New Workout
+= form_for([@training_plan, @week, @day, @workout]) do |f|
+  = f.label :distance
+  = f.text_field :distance, autofocus: true
+
+  = f.submit
+

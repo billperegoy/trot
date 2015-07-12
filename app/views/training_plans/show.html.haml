@@ -19,4 +19,9 @@
         %td
           Day
           = day.number
-
+          = link_to 'new', new_training_plan_week_day_workout_path(@training_plan, week, day)
+          %table
+            - day.workouts.each do |workout|
+              %tr
+                %td
+                  = workout.distance
