@@ -12,7 +12,7 @@
 %table
   - @training_plan.weeks.each do |week|
     %tr{class: "week-#{week.number}"}
-      %ts
+      %td
         Week
         = week.number
       - week.days.each do |day|
@@ -23,3 +23,6 @@
           - day.workouts.each do |workout|
             %p.distance
               = workout.distance
+      %td.total
+        Total - 
+        = week.distance

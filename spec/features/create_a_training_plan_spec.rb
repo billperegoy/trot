@@ -104,7 +104,43 @@ feature "create a training plan" do
     end
   end
 
+  feature "distances for a week are properly summed" do
+    scenario "with all days filled" do
+      create_training_plan(name: 'Half Marathon Training Plan',
+                           distance: 13.1
+                          )
+      create_week('1')
+      add_workout_to(week: "1", day: "0", distance: "1")
+      add_workout_to(week: "1", day: "1", distance: "2")
+      add_workout_to(week: "1", day: "2", distance: "3")
+      add_workout_to(week: "1", day: "3", distance: "4")
+      add_workout_to(week: "1", day: "4", distance: "5")
+      add_workout_to(week: "1", day: "5", distance: "6")
+      add_workout_to(week: "1", day: "6", distance: "7")
+
+      expect_text_within(".week-1 .total", "28")
+    end
+
+    scenario "with some days undefined" do
+      create_training_plan(name: 'Half Marathon Training Plan',
+                           distance: 13.1
+                          )
+      create_week('1')
+      add_workout_to(week: "1", day: "0", distance: "1")
+      add_workout_to(week: "1", day: "1", distance: "2")
+      add_workout_to(week: "1", day: "2", distance: "3")
+      add_workout_to(week: "1", day: "3", distance: "4")
+
+      expect_text_within(".week-1 .total", "10")
+    end
+  end
+
   private
+  def add_workout_to(week:, day:, distance:)
+    click_link_within(".week-#{week} .day-#{day}", "new")
+    create_workout(distance)
+  end
+
   def click_link_within(context, link)
     within(context) do
       click_link  link

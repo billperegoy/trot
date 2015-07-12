@@ -10,4 +10,8 @@ class Week < ActiveRecord::Base
       Day.create(number: number, week_id: self.id)
     end
   end
+
+  def distance
+    days.inject(0) {|distance, days| distance += days.distance}
+  end
 end
