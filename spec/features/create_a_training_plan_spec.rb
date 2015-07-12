@@ -59,6 +59,22 @@ feature "create a training plan" do
       create_week('1')
       expect(page).to have_content("Number has already been taken")
     end
+  end
+
+  feature "Data for 7 days are created with each week" do
+    scenario "with valid data" do
+      create_training_plan(name: 'Half Marathon Training Plan',
+                           distance: 13.1
+                          )
+      create_week('1')
+      expect(page).to have_content("Day 0")
+      expect(page).to have_content("Day 1")
+      expect(page).to have_content("Day 2")
+      expect(page).to have_content("Day 3")
+      expect(page).to have_content("Day 4")
+      expect(page).to have_content("Day 5")
+      expect(page).to have_content("Day 6")
+    end
 
   end
 
