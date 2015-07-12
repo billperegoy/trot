@@ -78,7 +78,45 @@ feature "create a training plan" do
 
   end
 
+  feature "Distances can be added to training days" do
+    scenario "with valid data" do
+      create_training_plan(name: 'Half Marathon Training Plan',
+                           distance: 13.1
+                          )
+      create_week('1')
+
+      click_link_within(".week-1 .day-1", "new")
+
+      create_workout("12")
+      expect_text_within(".week-1 .day-1", "12")
+    end
+
+    scenario "with invalid data" do
+      create_training_plan(name: 'Half Marathon Training Plan',
+                           distance: 13.1
+                          )
+      create_week('1')
+
+      click_link_within(".week-1 .day-1", "new")
+
+      create_workout("-12")
+      expect(page).to have_content("must be greater than 0")
+    end
+  end
+
   private
+  def click_link_within(context, link)
+    within(context) do
+      click_link  link
+    end
+  end
+
+  def expect_text_within(context, text)
+    within(context) do
+      expect(page).to have_content(text)
+    end
+  end
+
   def create_training_plan(name:, distance:)
     visit new_training_plan_path
     fill_in "Name", with: name 
@@ -90,5 +128,10 @@ feature "create a training plan" do
     click_button "Add a Week"
     fill_in "Number", with: number
     click_on "Create Week"
+  end
+
+  def create_workout(distance)
+    fill_in "Distance", with: distance
+    click_on "Create Workout"
   end
 end

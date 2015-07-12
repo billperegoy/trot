@@ -11,17 +11,15 @@
 
 %table
   - @training_plan.weeks.each do |week|
-    %tr
-      %td 
+    %tr{class: "week-#{week.number}"}
+      %ts
         Week
         = week.number
       - week.days.each do |day|
-        %td
+        %td{class: "day-#{day.number}"}
           Day
           = day.number
-          = link_to 'new', new_training_plan_week_day_workout_path(@training_plan, week, day)
-          %table
-            - day.workouts.each do |workout|
-              %tr
-                %td
-                  = workout.distance
+          = link_to "new", new_training_plan_week_day_workout_path(@training_plan, week, day)
+          - day.workouts.each do |workout|
+            %p.distance
+              = workout.distance

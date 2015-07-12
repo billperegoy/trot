@@ -1,3 +1,10 @@
+- if @workout.errors.any?
+  .flash-error
+    %h2 Form errors were detected
+    %ul
+    - @workout.errors.full_messages.each do |msg|
+      %li= msg
+
 %h1 Create New Workout
 = form_for([@training_plan, @week, @day, @workout]) do |f|
   = f.label :distance

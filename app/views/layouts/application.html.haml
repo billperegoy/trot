@@ -9,10 +9,12 @@
   %body
     = yield
 
-    %h3 params
-    %ul
-    -  params.each do |param|
-      %li
-        = param[0] 
-        = '=>'
-        = param[1]
+    - if ENV['DEBUG']
+      .param-box
+        %h3 params
+        %ul
+        -  params.each do |param|
+          %li
+            = param[0] 
+            = '=>'
+            = param[1]
