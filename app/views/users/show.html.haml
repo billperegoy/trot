@@ -1,0 +1,18 @@
+%h1 User Information
+
+%ul
+  %li
+    Name:
+    = @user.name
+  %li
+    Email:
+    = @user.email
+
+%h2 Preferences
+%ul
+  - @user.preferences.each do |preference|
+    %li
+      = preference.name
+      = ': '
+      = preference.value
+

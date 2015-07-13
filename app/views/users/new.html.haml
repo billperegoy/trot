@@ -1,0 +1,14 @@
+- if @user.errors.any?
+  .flash-error
+    %h2 Form errors were detected
+    %ul
+    - @user.errors.full_messages.each do |msg|
+      %li= msg
+
+= form_for @user do |f|
+  = f.label :name
+  = f.text_field :name, autofocus: true
+  = f.label :email
+  = f.text_field :email
+
+  = f.submit
