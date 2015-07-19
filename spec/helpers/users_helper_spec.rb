@@ -11,5 +11,40 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe UsersHelper, :type => :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "ordered_days_of_week works for Monday" do
+    expect(ordered_days_of_week('Monday')).
+      to eq(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
+  end
+
+  it "ordered_days_of_week works for Tuesday" do
+    expect(ordered_days_of_week('Tuesday')).
+      to eq(['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'])
+  end
+
+  it "ordered_days_of_week works for Wedneday" do
+    expect(ordered_days_of_week('Wednesday')).
+      to eq(['Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue'])
+  end
+
+  it "ordered_days_of_week works for Thursday" do
+    expect(ordered_days_of_week('Thursday')).
+      to eq(['Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed'])
+  end
+
+  it "ordered_days_of_week works for Friday" do
+    expect(ordered_days_of_week('Friday')).
+      to eq(['Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'])
+  end
+
+  it "ordered_days_of_week works for Saturday" do
+    expect(ordered_days_of_week('Saturday')).
+      to eq(['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'])
+  end
+
+  it "ordered_days_of_week works for Sunday" do
+    expect(ordered_days_of_week('Sunday')).
+      to eq(['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])
+  end
+
+
 end

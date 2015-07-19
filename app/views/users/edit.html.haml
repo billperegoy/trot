@@ -1,0 +1,14 @@
+%h1 Edit User Preferences
+
+- if @user.errors.any?
+  .flash-error
+    %h2 Form errors were detected
+    %ul
+    - @user.errors.full_messages.each do |msg|
+      %li= msg
+
+= form_for @user do |f|
+  = f.label :start_day
+  = f.select :start_day, options_for_select(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], @user.start_day)
+
+  = f.submit

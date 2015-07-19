@@ -10,11 +10,12 @@
 
 %h2 Preferences
 %ul
-  - @user.preferences.each do |preference|
-    %li
-      = preference.name
-      = ': '
-      = preference.value
+  %li 
+    start_day :
+    = @user.start_day
+
+= link_to "Edit", edit_user_path(@user)
+
 
 %hr
 %h2 Current Training Plan: 10k Level II (16 weeks)
@@ -22,15 +23,13 @@
 %h2 Current Status: On Target
 %h2 Today's Workout: 2 miles LSD
 %table
-  %tr
+  %tr.calendar-header
     %th Week
-    %th Mon
-    %th Tue
-    %th Wed
-    %th Thu
-    %th Fri
-    %th Sat
-    %th Sun
+    -   days = ordered_days_of_week(@user.start_day)
+
+    - (0..6).each do |day_num|
+      %th{class: "day-#{day_num}"}
+        = days[day_num]
     %th Totals
   %tr.calendar-week
     %td 6
