@@ -1,5 +1,5 @@
 module UsersHelper
-  def ordered_days_of_week(start_day)
+  def ordered_days_of_week(start_day:)
     days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     rotate_count = { 
                     'Sunday' => 0,

@@ -25,7 +25,7 @@
 %table
   %tr.calendar-header
     %th Week
-    -   days = ordered_days_of_week(@user.start_day)
+    -   days = ordered_days_of_week(start_day: @user.start_day)
 
     - (0..6).each do |day_num|
       %th{class: "day-#{day_num}"}
